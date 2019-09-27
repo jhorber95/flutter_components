@@ -95,33 +95,33 @@ class _InputPageState extends State<InputPage> {
 
   Widget _createDate(BuildContext context) {
     return TextField(
-      controller: _dateEditingController,
-      enableInteractiveSelection: false,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-          hintText: 'dd/mm/yyy',
-          labelText: 'Fecha de nacimiento',
-          helperText: 'Fecha de nacimiento',
-          suffixIcon: Icon(Icons.perm_contact_calendar),
-          icon: Icon(Icons.calendar_today)),
-      onTap: (){
-        FocusScope.of(context).requestFocus(new FocusNode());
-        _selectDate(context);
-      }
-    );
+        controller: _dateEditingController,
+        enableInteractiveSelection: false,
+        decoration: InputDecoration(
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+            hintText: 'dd/mm/yyy',
+            labelText: 'Fecha de nacimiento',
+            helperText: 'Fecha de nacimiento',
+            suffixIcon: Icon(Icons.perm_contact_calendar),
+            icon: Icon(Icons.calendar_today)),
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+          _selectDate(context);
+        });
   }
 
-  void _selectDate(BuildContext context)  async{
+  void _selectDate(BuildContext context) async {
     DateTime picked = await showDatePicker(
         context: context,
         initialDate: new DateTime.now(),
         firstDate: new DateTime(2015),
-        lastDate: new DateTime(2025)
-    );
+        lastDate: new DateTime(2025),
+        locale: Locale('es', 'ES'));
 
-    if( picked != null) {
-        _fecha = picked.toString();
-        _dateEditingController.text = _fecha;
+    if (picked != null) {
+      _fecha = picked.toString();
+      _dateEditingController.text = _fecha;
     }
   }
 }
