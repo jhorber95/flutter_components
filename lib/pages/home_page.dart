@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget{
         title: Text('Componentes'),
       ),
       body: _lista(),
+
     );
   }
 
