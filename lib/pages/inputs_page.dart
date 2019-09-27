@@ -12,6 +12,9 @@ class _InputPageState extends State<InputPage> {
 
   TextEditingController _dateEditingController = new TextEditingController();
 
+  List<String> poderes = ['some', 'one'];
+  String _optionSelected = 'some';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +32,9 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _createPassword(),
           Divider(),
-          _createDate(context)
+          _createDate(context),
+          Divider(),
+          _createDropDown()
         ],
       ),
     );
@@ -123,5 +128,38 @@ class _InputPageState extends State<InputPage> {
       _fecha = picked.toString();
       _dateEditingController.text = _fecha;
     }
+  }
+
+  Widget _createDropDown() {
+    return Row(
+      children: <Widget>[
+        Icon(Icons.select_all),
+        Expanded(
+          child: DropdownButton(
+            value: _optionSelected,
+            items: _getOptionsDropdown(),
+            onChanged: (opt) {
+              setState(() {
+                _optionSelected = opt;
+              });
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  List<DropdownMenuItem<String>> _getOptionsDropdown() {
+    List<DropdownMenuItem<String>> list = new List();
+    poderes.forEach((p){
+      list.add(
+        DropdownMenuItem(
+          child: Text(p),
+          value: p,
+        )
+      );
+    });
+
+    return list;
   }
 }

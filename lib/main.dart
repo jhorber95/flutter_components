@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:widgets/pages/alert_page.dart';
-import 'package:widgets/pages/avatar_page.dart';
-import 'package:widgets/pages/home_page.dart';
 import 'package:widgets/routes/routes.dart';
 
 void main() => runApp(MyApp());
